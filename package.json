@@ -1,0 +1,25 @@
+{
+  "name": "course-project.-scraping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FryDay969/Course-Project.-Scraping.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FryDay969/Course-Project.-Scraping/issues"
+  },
+  "homepage": "https://github.com/FryDay969/Course-Project.-Scraping#readme",
+  "dependencies": {
+    "filesystem": "^1.0.1",
+    "puppeteer": "^11.0.0"
+  }
+}
