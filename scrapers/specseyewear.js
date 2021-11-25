@@ -7,7 +7,7 @@ let upload = () => {
         data.pop('');
         return data
     } catch (err) {
-        console.error(err)
+            fs.appendFileSync('log_file.txt', (err.message + '\n'))
     }
 }
 
@@ -31,7 +31,7 @@ const scraperObject = {
                 }
                 await page.close()
             } catch (err) {
-                const error = new Error("An error message")
+                fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
 
         }

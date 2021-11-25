@@ -27,7 +27,7 @@ const scraperObject4 = {
                     nextButton = false;
                 }
             }catch(err){
-                const error = new Error("An error message")
+                fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
         }
         recutsiveScrape()

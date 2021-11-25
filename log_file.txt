@@ -1,0 +1,12 @@
+ENOENT: no such file or directory, open 'specseyewear.txt'ENOENT: no such file or directory, open 'specseyewear.txt'ENOENT: no such file or directory, open 'specseyewear.txt'
+ENOENT: no such file or directory, open 'specseyewear.txt'
+ENOENT: no such file or directory, open 'specseyewear.txt'
+Error: ENOENT: no such file or directory, open 'specseyewear.txt'
+Error: failed to find element matching selector "#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(2) > div > div > a > div.product-card__price"
+Error: failed to find element matching selector "#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(2) > div > div > a > div.product-card__price"
+page.$eval(...).replace is not a function
+page.$eval(...).replace is not a function
+page.$eval(...).replace is not a function
+Protocol error (Runtime.callFunctionOn): Target closed.
+Error: failed to find element matching selector "#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(2) > div > div > a > div.product-card__price"
+Error: failed to find element matching selector "#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(2) > div > div > a > div.product-card__price"

@@ -30,7 +30,7 @@ const scraperObject4 = {
                     await page.close()
                 }
             }catch(err){
-                const error = new Error("An error message")
+                fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
         }
         recutsiveScrape()

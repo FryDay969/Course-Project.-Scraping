@@ -15,8 +15,10 @@ const scraperObject2 = {
                     let dataObj = {};
                     dataObj.productsUrl = await page.$eval(`#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(${i}) > div > a:nth-child(2)`, el => el.href);
                     dataObj.title = await page.$eval(`#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(${i}) > div > div > a > div.product-card__name`, text => text.textContent);
-                    dataObj.price = await page.$eval(`#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(${i}) > div > div > a > div.product-card__price`, text => text.textContent);
+                    let cleanPrice = await page.$eval(`#MainContent > div > div.grid.grid--no-gutters.grid--uniform > div:nth-child(${i}) > div > div > a > div.product-card__price`, text => text.textContent);
+                    dataObj.price = cleanPrice.replace('Regular price', '').trim();
                     products.push(dataObj)
+
                 }
                 let nextButton = false;
                 nextButton = await page.$eval('#MainContent > div > div.pagination > span.next > a', a => a.textContent);
@@ -28,8 +30,9 @@ const scraperObject2 = {
                 }
 
             }catch (err) {
-                const error = new Error("An error message")
+                fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
+            console.log(products)
         }
         recutsiveScrape()
     }

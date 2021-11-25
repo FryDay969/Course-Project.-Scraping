@@ -9,13 +9,14 @@ async function scrapeAll(browserInstance){
     try{
         browser = await browserInstance;
         // await pageScraper.scraper(browser);
-        await pageScraper2.scraper(browser);
-        // await pageScraper3.scraper(browser);
+        // await pageScraper2.scraper(browser);
+        await pageScraper3.scraper(browser);
         // await pageScraper4.scraper(browser);
         // await pageScraper5.scraper(browser);
     }
     catch(err){
         console.log("Could not resolve the browser instance => ", err);
+        fs.appendFileSync('log_file.txt', (err.message + '\n'))
     }
 }
 

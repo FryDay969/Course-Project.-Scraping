@@ -15,6 +15,7 @@ async function startBrowser(){
         });
     } catch (err) {
         console.log("Could not create a browser instance => : ", err);
+        fs.appendFileSync('log_file.txt', (err.message + '\n'))
     }
     return browser;
 }
