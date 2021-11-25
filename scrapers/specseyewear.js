@@ -2,7 +2,7 @@ const fs = require('fs')
 
 let upload = () => {
     try {
-        let data = fs.readFileSync('specseyewear.com.txt', 'utf8');
+        let data = fs.readFileSync('specseyewear.txt', 'utf8');
         data = data.split("\r\n");
         data.pop('');
         return data
@@ -22,7 +22,6 @@ const scraperObject = {
                 await page.goto(this.url[x]);
                 await page.waitForSelector('ul.snize-search-results-content.clearfix > li');
                 let productsAmount = await page.$$eval(`ul.snize-search-results-content.clearfix > li`, el => el.length);
-                console.log(productsAmount);
                 for (let i = 1; i <= productsAmount; i++) {
                     let dataObj = {};
                     dataObj.productsUrl = await page.$eval(`ul.snize-search-results-content.clearfix > li:nth-child(${i}) > a`, el => el.href);
@@ -30,15 +29,14 @@ const scraperObject = {
                     dataObj.price = await page.$eval(`ul.snize-search-results-content.clearfix > li:nth-child(${i}) > a > div.snize-item.clearfix > span > div.snize-price-list > span.snize-price`, text => text.textContent);
                     products.push(dataObj)
                 }
-                console.log(products.length)
                 await page.close()
             } catch (err) {
-                console.log(err)
+                const error = new Error("An error message")
             }
+
         }
-        fs.writeFileSync('newfile.csv', JSON.stringify(products))
-        await browser.close()
     }
 }
+
 
 module.exports = scraperObject;
