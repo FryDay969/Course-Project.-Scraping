@@ -4,6 +4,7 @@ const pageScraper3 = require('./scrapers/bloomingdales');
 const pageScraper4 = require('./scrapers/solsticesunglasses');
 const pageScraper5 = require('./scrapers/sunglassworld');
 
+
 async function scrapeAll(browserInstance){
     let browser;
     try{

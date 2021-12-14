@@ -1,3 +1,8 @@
+const fs = require('fs')
+const Glasses = require('../db.models/glasses.model')
+const { v4: uuidv4 } = require('uuid');
+
+
 const scraperObject3 = {
     url: "https://www.bloomingdales.com/shop/search?keyword=maui+jim+",
     async scraper(browser){
@@ -15,14 +20,16 @@ const scraperObject3 = {
                 let cleanPrice = await page.$eval(`ul > li > div > ul > li:nth-child(${i}) > div.productThumbnail > div.productDetail > div.priceInfo > div > div > span`, text => text.textContent);
                 dataObj.price = cleanPrice.trim()
                 products.push(dataObj)
-                console.log(dataObj)
             }
             await page.close()
         }catch(err){
             fs.appendFileSync('log_file.txt', (err.message + '\n'))
         }
-
+        for (let y=1; y < products.length; y++){
+            Glasses.saveScrapedResults(uuidv4(), products[y].productsUrl,products[y].title,products[y].price);
+        }
     }
+
 }
 
 module.exports = scraperObject3;

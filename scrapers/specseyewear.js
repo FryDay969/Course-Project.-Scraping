@@ -1,4 +1,6 @@
 const fs = require('fs')
+const Glasses = require('../db.models/glasses.model')
+const { v4: uuidv4 } = require('uuid');
 
 let upload = () => {
     try {
@@ -29,12 +31,17 @@ const scraperObject = {
                     dataObj.price = await page.$eval(`ul.snize-search-results-content.clearfix > li:nth-child(${i}) > a > div.snize-item.clearfix > span > div.snize-price-list > span.snize-price`, text => text.textContent);
                     products.push(dataObj)
                 }
+                //
                 await page.close()
             } catch (err) {
-                fs.appendFileSync('log_file.txt', (err.message + '\n'))
+                fs.appendFileSync('log_file.txt', (err.stackTrace + '\n'))
             }
 
         }
+        for (let y=0; y < products.length; y++){
+            Glasses.saveScrapedResults(uuidv4(), products[y].productsUrl,products[y].title,products[y].price);
+        }
+
     }
 }
 

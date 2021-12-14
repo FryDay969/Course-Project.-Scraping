@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/FryDay969/Course-Project.-Scraping#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "filesystem": "^1.0.1",
-    "puppeteer": "^11.0.0"
+    "mysql2": "^2.3.3",
+    "puppeteer": "^11.0.0",
+    "uuid": "^8.3.2"
   }
 }

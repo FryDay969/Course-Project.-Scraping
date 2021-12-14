@@ -1,4 +1,6 @@
 const fs = require('fs')
+const Glasses = require('../db.models/glasses.model')
+const { v4: uuidv4 } = require('uuid');
 
 const scraperObject2 = {
     url: "https://shadesofcharleston.com/search?q=maui+jim",
@@ -32,10 +34,13 @@ const scraperObject2 = {
             }catch (err) {
                 fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
-            console.log(products)
+            for (let y=0; y < products.length; y++){
+                Glasses.saveScrapedResults(uuidv4(), products[y].productsUrl,products[y].title,products[y].price);
+            }
         }
         recutsiveScrape()
     }
+
 }
 
 module.exports = scraperObject2;

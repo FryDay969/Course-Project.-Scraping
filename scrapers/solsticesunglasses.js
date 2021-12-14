@@ -1,3 +1,8 @@
+const fs = require('fs')
+const Glasses = require('../db.models/glasses.model')
+const { v4: uuidv4 } = require('uuid');
+
+
 const scraperObject4 = {
     url: "https://solsticesunglasses.com/search?page=1&q=maui+jim&type=product",
     async scraper(browser){
@@ -32,6 +37,12 @@ const scraperObject4 = {
             }catch(err){
                 fs.appendFileSync('log_file.txt', (err.message + '\n'))
             }
+            // for (let y=0; y < products.length; y++){
+            //     Glasses.saveScrapedResults(uuidv4(), products[y].productsUrl,products[y].title,products[y].price);
+            //     console.log('success')
+            //     fs.appendFileSync('solsticesunglasses.txt', (products[0].productsUrl + '\n'))
+            // }
+
         }
         recutsiveScrape()
     }
